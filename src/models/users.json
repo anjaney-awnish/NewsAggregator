@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "email": "jatinjena@gmail.com",
+            "password": "123456",
+            "preferences": "sports"
+        },
+        {
+            "id": "1360ac42-25e9-4df4-8110-75f1963ea1d8",
+            "email": "jj@gmail.com",
+            "password": "$2b$08$eO8pOiXlsU03vYH.b6o7WO5/VOCqICQUDQUxCoGTSOTWzQnnMVTFy",
+            "preferences": "sports"
+        }
+    ]
+}
