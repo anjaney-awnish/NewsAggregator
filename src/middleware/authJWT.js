@@ -2,25 +2,37 @@ const jwt=require('jsonwebtoken')
 const User= require('../models/users.json')
 
 const verifyToken=(req,res,next) => {
+   // console.log('i am here')
     if(req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0]=='JWT'){
         jwt.verify(req.headers.authorization.split(' ')[1],process.env.API_SECRET,function(err,decode){
             const {email,password}=req.body;
             let current_users=JSON.parse(JSON.stringify(User))
             const user= current_users.users.find(val=>val.email==email);
+            console.log(user)
             if(err){
                 req.user=undefined
                 next()
             }
-            user.find({
-                id:decode.id
-            }).then(user=>{
+
+            if(user.id==decode.id){
                 req.user=user
                 next()
-            }).catch(err=>{
-                 res.status(500).send({
-                    message:err
-                 })
-            })
+            }
+            else{
+                res.status(500).send({
+                    message:'Error'
+                })
+            }
+            // user.find(
+            //     val=>val.id==decode.id
+            // ).then(user=>{
+            //     req.user=user
+            //     next()
+            // }).catch(err=>{
+            //      res.status(500).send({
+            //         message:err
+            //      })
+            // })
         });
 
     }

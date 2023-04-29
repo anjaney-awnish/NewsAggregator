@@ -14,7 +14,7 @@ var signup=(req,res)=>{
         preferences:req.body.preferences
     }
 
-    console.log(userData.id)
+    //console.log(userData.id)
 
     const write_path=path.join(__dirname,'..','models/users.json')
 
