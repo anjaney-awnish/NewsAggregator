@@ -5,29 +5,40 @@ const fs=require('fs-extra')
 const path= require('path')
 const { v4: uuidv4 } = require('uuid');
 const { randomUUID } = require('crypto')
+const validator=require('../helpers/validator.js')
 
 var signup=(req,res)=>{
-    const userData={
-        id:uuidv4(),
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.password,8),
-        preferences:req.body.preferences
-    }
 
-    //console.log(userData.id)
+    const userData=req.body
+
+    userData.id=uuidv4()
+   
+
+   // console.log(userData)
 
     const write_path=path.join(__dirname,'..','models/users.json')
 
-    let current_users=JSON.parse(JSON.stringify(User))
+    if(validator.validateNewUserData(userData,User).status){
+        let current_users=JSON.parse(JSON.stringify(User))
+        userData.password=bcrypt.hashSync(req.body.password,8)
+        current_users.users.push(userData)
+        fs.writeFileSync(write_path,JSON.stringify(current_users))
+        res.status(200).json(validator.validateNewUserData(userData,User))
+    }
 
-    current_users.users.push(userData)
+    else{
+        res.status(400)
+        res.json(validator.validateNewUserData(userData,User))
+    }
 
-    fs.writeFileSync(write_path,JSON.stringify(current_users))
+    //console.log(userData.id)
 
 }
 
 var signin=(req,res)=>{
     const {email,password}=req.body;
+
+    if(req.body.email!=null && req.body.password!=null){
     const read_path=path.join(__dirname,'..','models/users.json')
     let current_users=JSON.parse(JSON.stringify(User))
     const user= current_users.users.find(val=>val.email==email);
@@ -37,6 +48,7 @@ var signin=(req,res)=>{
             message:'Invalid username or password'
         })
     }
+    
     
     bcrypt.compare(password,user.password,(err,result)=>{
         
@@ -66,6 +78,13 @@ var signin=(req,res)=>{
             accessToken:token
         })
     })
+}
+
+else{
+    res.status(401).send({
+        'messgae':'Incomplete details'
+    })
+}
 }
 
 module.exports={

@@ -1,1 +1,22 @@
-{"users":[{"id":"1","email":"jatinjena@gmail.com","password":"123456","preferences":"sports"},{"id":"1360ac42-25e9-4df4-8110-75f1963ea1d8","email":"jj@gmail.com","password":"$2b$08$eO8pOiXlsU03vYH.b6o7WO5/VOCqICQUDQUxCoGTSOTWzQnnMVTFy","preferences":"business"}]}
+{
+    "users": [
+        {
+            "email": "aa@gmail.com",
+            "password": "$2b$08$OYPlXizfwNTgwJeUFbbz9OGI4iopgV3JZCkVumQPI/l3UrHR4clvS",
+            "preferences": "sports",
+            "id": "2ae3674f-db1f-4e7d-9b72-cbd436ff51f9"
+        },
+        {
+            "email": "tt@gmail.com",
+            "password": "$2b$08$b482zlJ/qlUfnT7k1WMM/.NgMI8c5PBEZHZg9s8yuDI3cLdkzLluW",
+            "preferences": "sports",
+            "id": "07d6f555-9208-4fa5-a163-399a88c03776"
+        },
+        {
+            "email": "dd@gmail.com",
+            "password": "$2b$08$BrZZRygDN5uxQH4z03iffejsGQKYXO2mIfXYMfs7hk1dNfeUQynJS",
+            "preferences": "sports",
+            "id": "bc1c1db8-2ab7-4ee2-b485-de69292d0eb3"
+        }
+    ]
+}

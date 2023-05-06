@@ -35,3 +35,4 @@ app.listen(process.env.PORT || PORT, (error) =>{
         console.log("Error occurred, server can't start", error);
     }
   );
+module.exports= app;
