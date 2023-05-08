@@ -26,9 +26,9 @@ describe('Verification of Regitser', ()=>{
 
             
                 let current_users = JSON.parse(JSON.stringify(User))
-                console.log(current_users.users)
+                
                 current_users.users = current_users.users.filter(user => user.email !== userDetails.email);
-                console.log(current_users.users)
+                
                 const write_path=path.join(__dirname,'../..','/src/models/users.json')
                 fs.writeFileSync(write_path, JSON.stringify(current_users));
                 
@@ -39,6 +39,23 @@ describe('Verification of Regitser', ()=>{
         
         
 
+    })
+
+
+
+    it("Successfull Sigin", (done)=>{
+        let userCredentials={
+            "email":"dhireshg@gmail.com",
+            "password":"123456"
+        }
+
+        chai.request(server).post('/signin').send(userCredentials).end((err,res) => {
+            expect(res.status).equal(200);
+            expect(res.body.message).equal('Login Successfull');
+           
+            done();
+
+        })
     })
 
     

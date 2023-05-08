@@ -17,6 +17,12 @@
             "password": "$2b$08$BrZZRygDN5uxQH4z03iffejsGQKYXO2mIfXYMfs7hk1dNfeUQynJS",
             "preferences": "sports",
             "id": "bc1c1db8-2ab7-4ee2-b485-de69292d0eb3"
+        },
+        {
+            "email": "dhireshg@gmail.com",
+            "password": "$2b$08$lVg3nq5KFJxuZQhFYnVnEuc6Jtc5xnVkqgOEWBnpVe9b2mWto1s4O",
+            "preferences": "business",
+            "id": "2c5a57c4-cf85-48f6-a8dd-5a73b518eb65"
         }
     ]
 }
