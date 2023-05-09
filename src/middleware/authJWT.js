@@ -8,12 +8,12 @@ const verifyToken=(req,res,next) => {
             const {email,password}=req.body;
             let current_users=JSON.parse(JSON.stringify(User))
             const user= current_users.users.find(val=>val.email==email);
-            console.log(user)
+          //  console.log(user)
             if(err){
                 req.user=undefined
                 next()
             }
-
+if(decode!=undefined){
             if(user.id==decode.id){
                 req.user=user
                 next()
@@ -22,7 +22,7 @@ const verifyToken=(req,res,next) => {
                 res.status(500).send({
                     message:'Error'
                 })
-            }
+            }}
             // user.find(
             //     val=>val.id==decode.id
             // ).then(user=>{

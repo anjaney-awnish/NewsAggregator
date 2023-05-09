@@ -53,9 +53,9 @@ var signin=(req,res)=>{
     bcrypt.compare(password,user.password,(err,result)=>{
         
         if(err||!result){
-            console.log(result)
+           // console.log(result)
             return res.status(401).send({
-                message:'Invalid user and password yha'
+                message:'Invalid username or password'
             })
         }
         const payload= user.email
@@ -82,7 +82,7 @@ var signin=(req,res)=>{
 
 else{
     res.status(401).send({
-        'messgae':'Incomplete details'
+        'message':'Incomplete details'
     })
 }
 }
